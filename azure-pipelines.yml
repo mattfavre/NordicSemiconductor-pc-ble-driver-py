@@ -24,7 +24,8 @@ jobs:
         tar zvxf swig-4.0.0.tar.gz
         cd swig-4.0.0
         ./configure
-        sudo make && make install
+        sudo make
+        sudo make install
       displayName: 'Install swig'
     - script: |
         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$(conda_version).sh -O $(Agent.HomeDirectory)/miniconda.sh
