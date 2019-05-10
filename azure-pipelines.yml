@@ -17,8 +17,15 @@ jobs:
     steps:
     - script: |
         sudo apt-get update
-        sudo apt-get install ninja-build swig libudev-dev
+        sudo apt-get install ninja-build libudev-dev
       displayName: 'Install toolchain'
+    - script: |
+        wget https://downloads.sourceforge.net/project/swig/swig/swig-4.0.0/swig-4.0.0.tar.gz -O swig-4.0.0.tar.gz
+        tar zvxf swig-4.0.0.tar.gz
+        cd swig-4.0.0
+        ./configure
+        sudo make && make install
+      displayName: 'Install swig'
     - script: |
         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$(conda_version).sh -O $(Agent.HomeDirectory)/miniconda.sh
         bash $(Agent.HomeDirectory)/miniconda.sh -b -p $(conda_root)
@@ -97,7 +104,7 @@ jobs:
       displayName: 'Install XCode'
     - script: |
         brew update
-        brew install gcc swig
+        brew install gcc6 swig
       displayName: 'Install gcc and swig'
     - script: |
         git clone https://github.com/NordicPlayground/vcpkg.git $(VCPKG_ROOT)
