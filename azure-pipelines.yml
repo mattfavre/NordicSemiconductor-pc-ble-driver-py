@@ -96,8 +96,8 @@ jobs:
         sudo xcode-select -s /Applications/Xcode_10.1.app
       displayName: 'Install XCode'
     - script: |
-        brew install gcc swig
-      displayName: 'Install gcc and swig'
+        brew install gcc swig4
+      displayName: 'Install gcc and swig4'
     - script: |
         git clone https://github.com/NordicPlayground/vcpkg.git $(VCPKG_ROOT)
         $(VCPKG_ROOT)/bootstrap-vcpkg.sh
