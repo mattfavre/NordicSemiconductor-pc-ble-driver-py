@@ -67,6 +67,14 @@ class ProgramAdapter(unittest.TestCase):
 
         serial_ports = BLEDriver.enum_serial_ports()
 
+        # Check that number of kits from enumeration matches
+        # the number of kits provided from settings
+        self.assertTrue(len(serial_ports) >= len(settings.serial_ports))
+        found_ports = map(lambda port: port.port, serial_ports)
+
+        for serial_port in settings.serial_ports:
+            self.assertIn(serial_port, found_ports)
+
         for serial_port in serial_ports:
             if serial_port.port in settings.serial_ports:
                 serial_number = serial_port.serial_number
