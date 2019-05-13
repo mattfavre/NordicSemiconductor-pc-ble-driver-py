@@ -69,8 +69,8 @@ class ProgramAdapter(unittest.TestCase):
 
         # Check that from enumeration matches
         # kits provided from settings
-        self.assertTrue(len(serial_ports) >= len(settings.serial_ports))
         found_ports = map(lambda port: port.port, serial_ports)
+        self.assertTrue(len(found_ports) >= len(settings.serial_ports))
 
         for serial_port in settings.serial_ports:
             self.assertIn(serial_port, found_ports)
